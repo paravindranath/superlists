@@ -18,6 +18,7 @@ class NewVisitorTest(LiveServerTestCase):
 
     def check_for_row_in_list_table(self, row_text):
         table = self.browser.find_element_by_id('id_list_table')
+        #import pdb; pdb.set_trace()
         rows = table.find_elements_by_tag_name('tr')
         self.assertIn(row_text, [row.text for row in rows])
 
@@ -58,8 +59,8 @@ class NewVisitorTest(LiveServerTestCase):
         inputbox.send_keys(Keys.ENTER)
     
         # The page updates again, and now shows both items on her list
-        self.check_for_row_in_list_table('1: Buy peacock feathers')
         self.check_for_row_in_list_table('2: Use peacock feathers to make a fly')
+        self.check_for_row_in_list_table('1: Buy peacock feathers')
         # Satisfied, she goes back to sleep
 
     def test_multiple_users_can_start_lists_at_different_urls(self):
